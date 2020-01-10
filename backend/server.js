@@ -16,8 +16,16 @@ connectDB();
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Routes files
+const users = require('./routes/users');
+const jobs = require('./routes/jobs');
+
 app.use(cors());
 app.use(express.json());
+
+// Mount Routes
+app.use('/api/v1/users', users);
+app.use('/api/v1/jobs', jobs);
 
 app.listen(port, () => {
 	console.log(`Server started on port: ${port}`);
